@@ -4,6 +4,7 @@
 #define PI 3.14159
 
 using std::ceil;
+using std::cin;
 using std::cout;
 using std::endl;
 using std::floor;
@@ -63,13 +64,37 @@ int numberOfSodaBottles(float bottleCapacity, float baseRadius, float height)
 
 int main()
 {
-  cout << "Cuantos días necesito para poder hacer 10 playeras, si una de las máquinas "
-       << "produce 3.3 playeras al día, y la otra 0.8 playeras al día: " << endl;
-  cout << numberOfDays(3.3, 0.8, 10) << " días\n\n";
+  int shirtsToProduce;
+  float line1Production, line2Production;
+  cout << "Ingrese las playeras a producir: ";
+  cin >> shirtsToProduce;
+  cout << "Ingrese la producción de la línea uno: ";
+  cin >> line1Production;
+  cout << "Ingrese la producción de la línea dos: ";
+  cin >> line2Production;
 
-  cout << "Cuantas botellas de refresco puedo llenar, si cada botella contiene 650 mL "
-       << "y mi tanque de refresco tiene unas medidas de 0.5m de radio por 1.5m de alto: "
+  cout << "Cuantos días necesito para poder hacer "
+       << shirtsToProduce
+       << " playeras, si una de las máquinas "
+       << "produce " << line1Production
+       << " playeras al día, y la otra "
+       << line2Production << " playeras al día: "
+       << endl;
+  cout << numberOfDays(line1Production, line2Production, shirtsToProduce) << " días\n\n";
+
+  float bottleCapacity, baseRadius, height;
+  cout << "Ingrese la capacidad (en mL) de la botella de refresco: ";
+  cin >> bottleCapacity;
+  cout << "Ingresa el radio del contenedor en metros: ";
+  cin >> baseRadius;
+  cout << "Ingresa la altura del contender en metros: ";
+  cin >> height;
+
+  cout << "Cuantas botellas de refresco puedo llenar, si cada botella contiene "
+       << bottleCapacity << "mL "
+       << "y mi tanque de refresco tiene unas medidas de " << baseRadius
+       << "m de radio por " << height << "m de alto: "
        << endl;
 
-  cout << numberOfSodaBottles(650, 0.5, 1.5) << " botellas\n\n";
+  cout << numberOfSodaBottles(bottleCapacity, baseRadius, height) << " botellas\n\n";
 }
