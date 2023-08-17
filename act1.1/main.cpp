@@ -9,6 +9,9 @@ using std::cout;
 using std::endl;
 using std::floor;
 
+// Ricardo Adolfo Fernández Alvarado A01704813
+// Damariz Licea Carrisoza A01369045
+
 // PROBLEMA 1
 
 /**
