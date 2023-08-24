@@ -34,7 +34,7 @@ void merge(vector<double> &vec, int start, int mid, int end)
 
   while (leftIndex < left.size() && rightIndex < right.size())
   {
-    if (left[leftIndex] <= right[rightIndex])
+    if (left[leftIndex] > right[rightIndex])
     {
       vec[vecIndex] = left[leftIndex];
       leftIndex++;
@@ -89,7 +89,7 @@ void mergeSort(vector<double> &vec, int start, int end)
  * Complejidad temporal de O(nlog(n)).
  * Complejidad espacial de O(n).
  *
- * @param vec el arreglo a ordenar
+ * @param vec el vector a ordenar
  */
 void mergeSort(vector<double> &vec)
 {
