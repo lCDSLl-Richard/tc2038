@@ -5,7 +5,9 @@
 
 using std::cin;
 using std::cout;
+using std::endl;
 using std::map;
+using std::min;
 using std::reverse;
 using std::sort;
 using std::vector;
@@ -22,7 +24,61 @@ vector<int> greedyChange(vector<int> &coinDenominations, int target)
   return res;
 }
 
-vector<int> DPChange(vector<int> &coinDenominations, int target, map<int, int> cache) {}
+vector<int> DPChange(vector<int> &coinDenominations, int target)
+{
+  vector<vector<int>> changeMatrix(coinDenominations.size() + 1, vector<int>(target + 1, 0));
+  for (int i = 0; i < target + 1; i++)
+    changeMatrix[0][i] = i;
+
+  for (int i = 1; i < coinDenominations.size() + 1; i++)
+  {
+    for (int j = 0; j < target + 1; j++)
+    {
+      if (j >= coinDenominations[i - 1])
+      {
+        changeMatrix[i][j] = min(changeMatrix[i - 1][j],
+                                 1 + changeMatrix[i][j - coinDenominations[i - 1]]);
+      }
+      else
+      {
+        changeMatrix[i][j] = changeMatrix[i - 1][j];
+      }
+    }
+  }
+
+  // for (int i = 0; i < coinDenominations.size() + 1; i++)
+  // {
+  //   for (int j = 0; j < target + 1; j++)
+  //   {
+  //     cout << changeMatrix[i][j] << " ";
+  //   }
+  //   cout << endl;
+  // }
+
+  int denomination = coinDenominations.size();
+  vector<int> res(denomination);
+
+  while (denomination > 0)
+  {
+    if (changeMatrix[denomination][target] == changeMatrix[denomination - 1][target])
+    {
+      denomination--;
+      continue;
+    }
+    else if (changeMatrix[denomination][target] ==
+             1 + changeMatrix[denomination][target - coinDenominations[denomination]])
+    {
+      res[denomination]++;
+      target -= coinDenominations[denomination];
+    }
+    else
+    {
+      break;
+    }
+  }
+
+  return res;
+}
 
 int main()
 {
@@ -52,4 +108,15 @@ int main()
   {
     cout << numberOfCoins[i] << " ";
   }
+  cout << endl;
+
+  reverse(coinDenominations.begin(), coinDenominations.end());
+  vector<int>
+      numberOfCoinsDP = DPChange(coinDenominations, payed - charged);
+
+  for (int i = 0; i < numberOfCoinsDP.size(); i++)
+  {
+    cout << numberOfCoinsDP[i] << " ";
+  }
+  cout << endl;
 }
