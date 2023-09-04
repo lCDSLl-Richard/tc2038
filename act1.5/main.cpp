@@ -1,12 +1,10 @@
 #include <vector>
 #include <iostream>
 #include <algorithm>
-#include <map>
 
 using std::cin;
 using std::cout;
 using std::endl;
-using std::map;
 using std::min;
 using std::reverse;
 using std::sort;
@@ -73,7 +71,8 @@ vector<int> DPChange(vector<int> &coinDenominations, int target)
 
   while (denomination > 0)
   {
-    if (changeMatrix[denomination][target] == changeMatrix[denomination - 1][target])
+    if (coinDenominations[denomination - 1] != 1 &&
+        changeMatrix[denomination][target] == changeMatrix[denomination - 1][target])
     {
       denomination--;
       continue;
