@@ -12,6 +12,16 @@ using std::reverse;
 using std::sort;
 using std::vector;
 
+/**
+ * @brief Función para calcular el cambio de monedas de manera voraz
+ *
+ * Complejidad temporal: O(n)
+ * Complejidad espacial: O(n)
+ *
+ * @param coinDenominations el arreglo con las denominaciones
+ * @param target el cambio a devolver
+ * @return vector<int> el vector con los valores
+ */
 vector<int> greedyChange(vector<int> &coinDenominations, int target)
 {
   vector<int> res(coinDenominations.size(), 0);
@@ -24,6 +34,18 @@ vector<int> greedyChange(vector<int> &coinDenominations, int target)
   return res;
 }
 
+/**
+ * @brief Función para calcular el cambio de monedas de manera dinámica
+ *
+ * Complejidad temporal: O(n * m)
+ * Complejidad espacial: O(n * m)
+ * n = número de denominaciones
+ * m = cantidad a devolver
+ *
+ * @param coinDenominations El arreglo con las denominaciones
+ * @param target El valor de cambio a regresar
+ * @return vector<int> El vector con la cantidad de monedas de cada denominación
+ */
 vector<int> DPChange(vector<int> &coinDenominations, int target)
 {
   vector<vector<int>> changeMatrix(coinDenominations.size() + 1, vector<int>(target + 1, 0));
@@ -46,17 +68,8 @@ vector<int> DPChange(vector<int> &coinDenominations, int target)
     }
   }
 
-  // for (int i = 0; i < coinDenominations.size() + 1; i++)
-  // {
-  //   for (int j = 0; j < target + 1; j++)
-  //   {
-  //     cout << changeMatrix[i][j] << " ";
-  //   }
-  //   cout << endl;
-  // }
-
   int denomination = coinDenominations.size();
-  vector<int> res(denomination);
+  vector<int> res(denomination, 0);
 
   while (denomination > 0)
   {
@@ -65,11 +78,12 @@ vector<int> DPChange(vector<int> &coinDenominations, int target)
       denomination--;
       continue;
     }
-    else if (changeMatrix[denomination][target] ==
-             1 + changeMatrix[denomination][target - coinDenominations[denomination]])
+    else if (target >= coinDenominations[denomination - 1] &&
+             changeMatrix[denomination][target] ==
+                 1 + changeMatrix[denomination][target - coinDenominations[denomination - 1]])
     {
-      res[denomination]++;
-      target -= coinDenominations[denomination];
+      res[denomination - 1]++;
+      target -= coinDenominations[denomination - 1];
     }
     else
     {
@@ -77,6 +91,7 @@ vector<int> DPChange(vector<int> &coinDenominations, int target)
     }
   }
 
+  reverse(res.begin(), res.end());
   return res;
 }
 
@@ -104,6 +119,7 @@ int main()
 
   vector<int> numberOfCoins = greedyChange(coinDenominations, payed - charged);
 
+  cout << "Cambio voraz: ";
   for (int i = 0; i < numberOfCoins.size(); i++)
   {
     cout << numberOfCoins[i] << " ";
@@ -114,6 +130,7 @@ int main()
   vector<int>
       numberOfCoinsDP = DPChange(coinDenominations, payed - charged);
 
+  cout << "Cambio dinámico: ";
   for (int i = 0; i < numberOfCoinsDP.size(); i++)
   {
     cout << numberOfCoinsDP[i] << " ";
