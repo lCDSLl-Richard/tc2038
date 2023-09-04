@@ -1,3 +1,7 @@
+// Ricardo Adolfo Fernández Alvarado - A01704813
+// Damariz Licea Carrisoza - A01369045
+// Compilar con g++ -std=c++11 main.cpp
+
 #include <vector>
 #include <iostream>
 #include <algorithm>
