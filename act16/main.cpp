@@ -2,10 +2,9 @@
 #include <vector>
 #include <math.h>
 
-/* Laberinto Backtracking
- * Ricardo Adolfo Fernández Alvarado A01704813
- * Damariz Licea Carrisoza A01369045
- */
+// Laberinto Backtracking
+// Ricardo Adolfo Fernández Alvarado A01704813
+// Damariz Licea Carrisoza A01369045
 
 using namespace std;
 
@@ -19,7 +18,6 @@ using namespace std;
  * @return true if the position is valid, false if not
  * Time complexity O(1)
  */
-
 bool keepGoing(int **arr, int x, int y, int nR, int nC)
 {
     if (x < nR && y < nC && arr[x][y] == 1)
@@ -39,9 +37,10 @@ bool keepGoing(int **arr, int x, int y, int nR, int nC)
  * @param solutionArr is the array that will be filled with the solution
  * @return true if there is a solution, false if not
  * Time complexity O(2^n)
+ * It follows the order first right then down
  */
 
-bool recorringMaze(int **arr, int x, int y, int nR, int nC, int **solutionArr)
+bool solveMaze(int **arr, int x, int y, int nR, int nC, int **solutionArr)
 {
     if (x == nR - 1 && y == nC - 1)
     {
@@ -56,11 +55,11 @@ bool recorringMaze(int **arr, int x, int y, int nR, int nC, int **solutionArr)
         {
             return true;
         }
-        if (recorringMaze(arr, x + 1, y, nR, nC, solutionArr))
+        if (solveMaze(arr, x + 1, y, nR, nC, solutionArr))
         {
             return true;
         }
-        if (recorringMaze(arr, x, y + 1, nR, nC, solutionArr))
+        if (solveMaze(arr, x, y + 1, nR, nC, solutionArr))
         {
             return true;
         }
@@ -81,8 +80,7 @@ bool recorringMaze(int **arr, int x, int y, int nR, int nC, int **solutionArr)
 int main()
 {
     int nR, nC;
-    cout << "Ingresa el numero de filas: ";
-    cout << "Ingresa el numero de columnas: ";
+    cout << "Ingresa el numero de filas y columnas: ";
     cin >> nR >> nC;
     if (nR <= 0 || nC <= 0)
     {
@@ -95,6 +93,8 @@ int main()
     {
         arr[i] = new int[nC];
     }
+
+    cout << "Ingresa los valores del laberinto: " << endl;
     for (int i = 0; i < nR; i++)
     {
         for (int j = 0; j < nC; j++)
@@ -112,7 +112,7 @@ int main()
             solutionArr[i][j] = 0;
         }
     }
-    if (recorringMaze(arr, 0, 0, nR, nC, solutionArr))
+    if (solveMaze(arr, 0, 0, nR, nC, solutionArr))
     {
         cout << "Si hay solucion" << endl;
         for (int i = 0; i < nR; i++)
