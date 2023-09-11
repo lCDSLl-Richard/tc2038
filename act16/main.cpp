@@ -97,7 +97,14 @@ int main()
     {
         for (int j = 0; j < nC; j++)
         {
-            cin >> arr[i][j];
+            int buffer;
+            cin >> buffer;
+            if (buffer != 0 && buffer != 1)
+            {
+                cout << "El valor no es valido" << endl;
+                return 1;
+            }
+            arr[i][j] = buffer;
         }
     }
 
