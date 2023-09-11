@@ -17,7 +17,7 @@ using namespace std;
  * @param nR is number of rows
  * @param nC is number of columns
  * @return true if the position is valid, false if not
- * complexity O(1)
+ * Time complexity O(1)
  */
 
 bool keepGoing(int **arr, int x, int y, int nR, int nC)
@@ -38,7 +38,7 @@ bool keepGoing(int **arr, int x, int y, int nR, int nC)
  * @param nC is number of columns
  * @param solutionArr is the array that will be filled with the solution
  * @return true if there is a solution, false if not
- * complexity O(2^n)
+ * Time complexity O(2^n)
  */
 
 bool recorringMaze(int **arr, int x, int y, int nR, int nC, int **solutionArr)
@@ -75,7 +75,7 @@ bool recorringMaze(int **arr, int x, int y, int nR, int nC, int **solutionArr)
  * @param nR you enter the number of rows
  * @param nC you enter the number of columns
  * @return int
- * complexity O(1)
+ * Time complexity O(1)
  */
 
 int main()
