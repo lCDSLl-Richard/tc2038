@@ -10,7 +10,7 @@
 using namespace std;
 
 /**
- * @brief keepGoing
+ * @brief keepGoing is a function that checks if the position is valid or not to move
  * @param arr is the array of the maze
  * @param x helping to move in the rows
  * @param y helping to move in the columns
@@ -30,7 +30,7 @@ bool keepGoing(int **arr, int x, int y, int nR, int nC)
 }
 
 /**
- * @brief recorringMaze
+ * @brief recorringMaze is a function that checks if there is a solution or not, and if there is a solution it fills the array with the solution
  * @param arr is the array of the maze
  * @param x helping to move in the rows
  * @param y helping to move in the columns
@@ -71,7 +71,7 @@ bool recorringMaze(int **arr, int x, int y, int nR, int nC, int **solutionArr)
 }
 
 /**
- * @brief main
+ * @brief main is the function that calls the other functions
  * @param nR you enter the number of rows
  * @param nC you enter the number of columns
  * @return int
