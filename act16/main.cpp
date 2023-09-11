@@ -39,7 +39,6 @@ bool keepGoing(int **arr, int x, int y, int nR, int nC)
  * Time complexity O(2^n)
  * It follows the order first right then down
  */
-
 bool solveMaze(int **arr, int x, int y, int nR, int nC, int **solutionArr)
 {
     if (x == nR - 1 && y == nC - 1)
@@ -76,7 +75,6 @@ bool solveMaze(int **arr, int x, int y, int nR, int nC, int **solutionArr)
  * @return int
  * Time complexity O(1)
  */
-
 int main()
 {
     int nR, nC;
