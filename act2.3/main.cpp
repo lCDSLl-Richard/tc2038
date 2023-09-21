@@ -95,9 +95,9 @@ int main()
   int rowSize;
   cout << "Ingresa el tamaño de la tabla: ";
   cin >> rowSize;
-  if (rowSize % 4 != 0)
+  if (rowSize % 4 != 0 || rowSize < 16 || rowSize > 64)
   {
-    cout << "El tamaño de la tabla debe ser multiplo de 4" << endl;
+    cout << "El tamaño de la tabla debe ser multiplo de 4 y estar entre 16 y 64" << endl;
     return -1;
   }
 
