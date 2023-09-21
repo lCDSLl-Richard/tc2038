@@ -1,0 +1,2 @@
+finalmente es importante entender que
+como funciona el hash, y que utilidad tiene.

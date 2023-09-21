@@ -1,0 +1,4 @@
+ademas de los new lines hay muchos
+otros tipos de
+caracteres, que no introducire del todo
+aqui, con miedo de explotar el programa
