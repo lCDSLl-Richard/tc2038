@@ -37,6 +37,7 @@ int main()
 
   generateSuffixArray(input, suffixArr);
 
+  cout << "\nSufijos ordenados:\n";
   for (int i = 0; i < input.length(); i++)
   {
     if (suffixArr[i].first < 10)
