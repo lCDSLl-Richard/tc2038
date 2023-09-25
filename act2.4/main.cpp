@@ -1,3 +1,8 @@
+// Actividad 2.4 Suffix Array
+// Ricardo Adolfo Fernández Alvarado - A01704813
+// Damariz Licea Carrisoza - A01369045
+// Compilar con g++ -std=c++11 main.cpp
+
 #include <iostream>
 #include <vector>
 #include <string>
