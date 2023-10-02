@@ -1,3 +1,7 @@
+// Compilar con g++ main.cpp -std=c++11
+// Ricardo Adolfo Fernández Alvarado A01704813
+// Damariz Licea Carrisoza A01369045
+
 #include <iostream>
 #include <fstream>
 #include <vector>
@@ -69,9 +73,11 @@ int main()
 
       vector<int> positions = KMP(pattern, text);
 
-      cout << "Patrón 0 " << j << endl;
+      cout << "Patrón 0" << j << endl;
       if (positions.size() > 0)
-        cout << "(true) Patrón encontrada en la posición: " << positions[0] << endl;
+        cout << "(true) Posición inicial: "
+             << positions[0] << " Posición final:  "
+             << positions[0] + pattern.size() << endl;
       else
         cout << "(false) Patrón no encontrado en la transmisión" << endl;
     }

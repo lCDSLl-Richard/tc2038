@@ -82,10 +82,10 @@ vector<int> KMP(const string &pattern, const string &text)
   int patternLength = pattern.length();
   int textLength = text.length();
   vector<int> lps = computeLPSArray(pattern);
-  vector<int> positions; // Store the starting positions of pattern matches
+  vector<int> positions;
 
-  int i = 0; // Index for text[]
-  int j = 0; // Index for pattern[]
+  int i = 0;
+  int j = 0;
 
   while (i < textLength)
   {
@@ -97,20 +97,15 @@ vector<int> KMP(const string &pattern, const string &text)
 
     if (j == patternLength)
     {
-      // Pattern found, add starting position to positions
       positions.push_back(i - j);
       j = lps[j - 1];
     }
     else if (i < textLength && pattern[j] != text[i])
     {
       if (j != 0)
-      {
         j = lps[j - 1];
-      }
       else
-      {
         i++;
-      }
     }
   }
 
