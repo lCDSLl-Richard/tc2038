@@ -5,6 +5,15 @@
 #include <vector>
 using namespace std;
 
+/**
+ * @brief
+ * Retorna el palíndromo de un string
+ *
+ * @param maliciousCode el código a palindromizar
+ * @return string el palíndromo
+ * @note Complejidad temporal: O(n)
+ * @note Complejidad espacial: O(1)
+ */
 string palindromize(string maliciousCode)
 {
   string palindrome = "";
@@ -16,6 +25,15 @@ string palindromize(string maliciousCode)
   return palindrome;
 }
 
+/**
+ * @brief
+ * Genera el arreglo LPS de una string
+ *
+ * @param pattern la string para generar el arreglo LPS
+ * @return vector<int> el vector LPS de la string
+ * @note Complejidad temporal: O(n)
+ * @note Complejidad espacial: O(n)
+ */
 vector<int> computeLPSArray(const string &pattern)
 {
   int patternLength = pattern.length();
@@ -47,6 +65,18 @@ vector<int> computeLPSArray(const string &pattern)
   return lps;
 }
 
+/**
+ * @brief
+ * Aplicación del algoritmo KMP para encontrar un patrón en un texto
+ *
+ * @param pattern el patrón a buscar
+ * @param text el texto sobre el cual buscar el patrón
+ * @return vector<int> los índices de inicio de las ocurrencias del patrón en el texto
+ *
+ * @note n = `text`, m = `pattern`
+ * @note Complejidad temporal: O(n + m).
+ * @note Complejidad espacial: O(m).
+ */
 vector<int> KMP(const string &pattern, const string &text)
 {
   int patternLength = pattern.length();

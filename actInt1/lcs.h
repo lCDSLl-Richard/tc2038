@@ -6,6 +6,18 @@
 
 using namespace std;
 
+/**
+ * @brief
+ * Encuentra la subsecuencia común más larga entre dos strings
+ *
+ * @param str1 la primera string sobre la que se buscará la subsecuencia
+ * @param str2 la segunda string sobre la que se buscará la subsecuencia
+ * @return pair<int, int> un par con el índice final de la subsecuencia y su longitud
+ *
+ * @note m = `str1.length()` n = `str2.length()`
+ * @note Complejidad temporal: O(m*n)
+ * @note Complejidad espacial: O(m*n)
+ */
 pair<int, int> LCS(const string &str1, const string &str2)
 {
   int m = str1.length();
