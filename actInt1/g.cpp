@@ -49,6 +49,7 @@ string palindromize(string maliciousCode)
     {
         palindrome += maliciousCode[i];
     }
+    return palindrome;
 }
 
 vector<pair<int, int>> findPatternInTrans(string pattern, string transmission)
