@@ -36,8 +36,11 @@ int main()
         continue;
       cout << "From node "
            << i + 1 << " to node "
-           << j + 1 << ": "
-           << distances[j] << endl;
+           << j + 1 << ": ";
+      if (distances[j] == INF)
+        cout << "No path\n";
+      else
+        cout << distances[j] << endl;
     }
   }
 
@@ -47,7 +50,12 @@ int main()
   for (auto i : res)
   {
     for (auto j : i)
-      cout << j << " ";
+    {
+      if (j == INF)
+        cout << "No path ";
+      else
+        cout << j << " ";
+    }
     cout << endl;
   }
 }
