@@ -1,10 +1,9 @@
 #include <iostream>
 #include <vector>
-#include <fstream> // Para manejar archivos
+#include <fstream>
 
 using namespace std;
 
-// Function to find the maximum profit
 int knapSack(int W, vector<int> &wt, vector<int> &val, vector<vector<int>> &dp)
 {
     int n = wt.size();
@@ -24,7 +23,6 @@ int knapSack(int W, vector<int> &wt, vector<int> &val, vector<vector<int>> &dp)
         }
     }
 
-    // Returning the maximum value of knapsack
     return dp[n][W];
 }
 
