@@ -1,73 +1,40 @@
 #include <iostream>
 #include <vector>
-#include <fstream>
+#include "knapSack.h"
 
 using namespace std;
 
-int knapSack(int W, vector<int> &wt, vector<int> &val, vector<vector<int>> &dp)
-{
-    int n = wt.size();
-
-    for (int i = 1; i <= n; i++)
-    {
-        for (int w = 0; w <= W; w++)
-        {
-            if (wt[i - 1] <= w)
-            {
-                dp[i][w] = max(dp[i - 1][w], dp[i - 1][w - wt[i - 1]] + val[i - 1]);
-            }
-            else
-            {
-                dp[i][w] = dp[i - 1][w];
-            }
-        }
-    }
-
-    return dp[n][W];
-}
-
 int main()
 {
-    ifstream inputFile("input3.txt");
+    cout << "Ingrese la cantidad de objetos: ";
+    int nItems;
+    cin >> nItems;
 
-    int N;
-    inputFile >> N;
+    vector<int> profits(nItems);
+    vector<int> weights(nItems);
 
-    vector<int> profit(N);
-    vector<int> weight(N);
+    cout << "\nBeneficios:" << endl;
+    for (int i = 0; i < nItems; i++)
+        cin >> profits[i];
 
-    cout << "Beneficios:" << endl;
-    for (int i = 0; i < N; i++)
-    {
-        inputFile >> profit[i];
-        cout << profit[i] << endl;
-    }
+    cout << "\nPesos:" << endl;
+    for (int i = 0; i < nItems; i++)
+        cin >> weights[i];
 
-    cout << "Pesos:" << endl;
-    for (int i = 0; i < N; i++)
-    {
-        inputFile >> weight[i];
-        cout << weight[i] << endl;
-    }
+    int maxWeight;
+    cout << "\nPeso máximo de la mochila: ";
+    cin >> maxWeight;
 
-    int W;
-    cout << "Peso máximo de la mochila" << endl;
-    inputFile >> W;
-
-    inputFile.close();
-
-    vector<vector<int>> dp(N + 1, vector<int>(W + 1, 0));
-    int result = knapSack(W, weight, profit, dp);
+    vector<vector<int>> matrix(nItems + 1, vector<int>(maxWeight + 1, 0));
+    int result = knapSack(maxWeight, weights, profits, matrix);
 
     cout << "Beneficio óptimo: " << result << endl;
 
     cout << "Matriz generada:" << endl;
-    for (int i = 1; i <= N; i++)
+    for (auto row : matrix)
     {
-        for (int w = 0; w <= W; w++)
-        {
-            cout << dp[i][w] << " ";
-        }
+        for (auto value : row)
+            cout << value << " ";
         cout << endl;
     }
 
