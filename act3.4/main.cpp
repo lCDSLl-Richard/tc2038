@@ -1,3 +1,6 @@
+// Damariz Licea - A01369045
+// Ricardo Fernández - A01704813
+
 #include <iostream>
 #include <fstream>
 #include <vector>
@@ -9,7 +12,11 @@ int main()
 {
     int nodes; // Número de nodos en el grafo
 
-    ifstream inputFile("Casos/cp6.txt");
+    string inFile;
+    cout << "Ingresa el nombre del archivo de prueba: ";
+    cin >> inFile;
+
+    ifstream inputFile(inFile);
 
     if (!inputFile)
     {
