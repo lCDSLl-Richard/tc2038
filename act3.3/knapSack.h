@@ -12,6 +12,9 @@
  * @param values el arreglo con los valores de cada item
  * @param matrix la matriz dónde se guardará el dp
  * @return El valor óptimo de salida
+ *
+ * @note Complejidad temporal: O(n*w), dónde n es la cantidad de objetos y w el peso de la mochila
+ * @note Complejidad espacial: O(n*w), dónde n es la cantidad de objetos y w el peso de la mochila
  */
 int knapSack(int maxWeight,
              std::vector<int> &weights,
