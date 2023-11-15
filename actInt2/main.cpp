@@ -1,9 +1,9 @@
 #include <iostream>
 
-#include "graph.h"
-#include "tsp.h"
-#include "nearestPoint.h"
-#include "fordFulkerson.h"
+#include "headers/graph.h"
+#include "headers/tsp.h"
+#include "headers/nearestPoint.h"
+#include "headers/fordFulkerson.h"
 
 using namespace std;
 
