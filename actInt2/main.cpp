@@ -21,7 +21,7 @@ int main(int argc, char *argv[])
     inFile.open(flags["-i"]);
     if (!inFile.is_open())
     {
-      cout << "Could not open infile\n";
+      cout << "No se pudo abrir el archivo de entrada\n";
       exit(1);
     }
   }
@@ -31,7 +31,7 @@ int main(int argc, char *argv[])
     outFile.open(flags["-o"]);
     if (!outFile.is_open())
     {
-      cout << "Could not open outfile\n";
+      cout << "No se pudo abrir el archivo de salida\n";
       exit(1);
     }
   }
