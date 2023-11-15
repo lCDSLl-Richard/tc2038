@@ -4,6 +4,7 @@
 #include <vector>
 #include <string>
 #include <sstream>
+#include <iomanip>
 
 using namespace std;
 
@@ -58,10 +59,20 @@ string Graph::stringify()
 {
   stringstream ss;
 
+  int maxDigits = 1;
+  for (auto row : graph)
+    for (int num : row)
+    {
+      int numDigits = 1;
+      while (num /= 10)
+        numDigits++;
+      maxDigits = max(maxDigits, numDigits);
+    }
+
   for (auto row : graph)
   {
     for (auto node : row)
-      ss << node << " ";
+      ss << setw(maxDigits) << node << " ";
     ss << endl;
   }
 
