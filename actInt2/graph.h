@@ -14,10 +14,11 @@ private:
 
 public:
   Graph(int);
+  Graph(Graph &);
 
-  void addEdge(int, int, int);
+  void setEdge(int, int, int);
   vector<int> getNeighbors(int);
-  int getValue(int, int);
+  int getWeight(int, int);
   int size();
 
   string stringify();
@@ -28,7 +29,12 @@ Graph::Graph(int size)
   graph = vector<vector<int>>(size, vector<int>(size));
 }
 
-void Graph::addEdge(int from, int to, int weight)
+Graph::Graph(Graph &graph)
+{
+  this->graph = graph.graph;
+}
+
+void Graph::setEdge(int from, int to, int weight)
 {
   graph[from][to] = weight;
 }
@@ -38,7 +44,7 @@ vector<int> Graph::getNeighbors(int from)
   return graph[from];
 }
 
-int Graph::getValue(int from, int to)
+int Graph::getWeight(int from, int to)
 {
   return graph[from][to];
 }

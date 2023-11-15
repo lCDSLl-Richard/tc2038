@@ -40,11 +40,11 @@ TspResult tsp(Graph &graph, int start = 0)
 
     for (int i = 0; i < vertex.size(); i++)
     {
-      currentPathWeight += graph.getValue(k, vertex[i]);
+      currentPathWeight += graph.getWeight(k, vertex[i]);
       k = vertex[i];
       currentPath.push_back(k);
     }
-    currentPathWeight += graph.getValue(k, start);
+    currentPathWeight += graph.getWeight(k, start);
 
     if (currentPathWeight < res.cost)
     {
