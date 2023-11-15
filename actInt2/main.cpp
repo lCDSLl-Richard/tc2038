@@ -1,98 +1,51 @@
 #include <iostream>
 
-#include "headers/graph.h"
-#include "headers/tsp.h"
-#include "headers/nearestPoint.h"
-#include "headers/fordFulkerson.h"
-#include "headers/kruskal.h"
+#include <map>
+#include <fstream>
+
+#include "solution.cpp"
+#include "headers/argHelper.h"
 
 using namespace std;
 
 int main(int argc, char *argv[])
 {
-  istream &input = cin;
-  int numCities;
-  cout << "Ingrese el tamaño del grafo: ";
-  input >> numCities;
+  map<string, string> flags;
+  processFlags(argc, argv, flags);
 
-  Graph cities(numCities);
+  ifstream inFile;
+  ofstream outFile;
 
-  cout << "Ingrese la matriz del grafo:\n";
-  for (int i = 0; i < numCities; i++)
-    for (int j = 0; j < numCities; j++)
+  if (flags["-i"] != "")
+  {
+    inFile.open(flags["-i"]);
+    if (!inFile.is_open())
     {
-      int weight;
-      input >> weight;
-      cities.setEdge(i, j, weight);
+      cout << "Could not open infile\n";
+      exit(1);
     }
+  }
 
-  vector<Edge> mst;
-  kruskal(cities, mst);
-
-  cout << "El cableado más óptimo es:\n";
-  for (auto node : mst)
-    cout << "De la ciudad "
-         << (char)(node.from + 'A')
-         << " a la ciudad "
-         << (char)(node.to + 'A')
-         << " con una distancia de "
-         << node.weight
-         << " km."
-         << endl;
-  cout << endl;
-
-  TspResult res = tsp(cities, 0);
-
-  cout << "Costo mínimo desde el nodo A a todas las ciudades: "
-       << res.cost
-       << endl;
-
-  cout << "Ruta seguida: ";
-  for (auto node : res.route)
-    cout << (char)(node + 'A') << " ";
-  cout << endl;
-
-  Graph fGraph(numCities);
-  cout << "Ingrese la matriz del grafo de flujo:\n";
-  for (int i = 0; i < numCities; i++)
-    for (int j = 0; j < numCities; j++)
+  if (flags["-o"] != "")
+  {
+    outFile.open(flags["-o"]);
+    if (!outFile.is_open())
     {
-      int weight;
-      input >> weight;
-      fGraph.setEdge(i, j, weight);
+      cout << "Could not open outfile\n";
+      exit(1);
     }
+  }
 
-  Graph rGraph(fGraph);
-  int maxFlow = fordFulkerson(fGraph, rGraph, 0, numCities - 1);
+  if (inFile.is_open() && outFile.is_open())
+    solution(inFile, outFile, false);
+  else if (inFile.is_open())
+    solution(inFile, cout, false);
+  else if (outFile.is_open())
+    solution(cin, outFile);
+  else
+    solution(cin, cout);
 
-  cout << "El flujo máximo de la ciudad A a la ciudad "
-       << (char)(numCities - 1 + 'A')
-       << " es: "
-       << maxFlow
-       << endl;
-  cout << "El grafo de Flujo máximo es: "
-       << endl
-       << rGraph.stringify() << endl;
-
-  vector<Point> cityLocations(numCities);
-
-  cout << "Ingrese las coordenadas de las centrales:\n";
-  for (int i = 0; i < numCities; i++)
-    input >> cityLocations[i].x >> cityLocations[i].y;
-
-  cout << "Ingrese las coordenadas de la nueva central: ";
-  Point newCentral;
-  input >> newCentral.x >> newCentral.y;
-
-  NearestPointRes nearestCity = nearestPoint(cityLocations, newCentral);
-
-  cout << "La central más cercana es: ("
-       << cityLocations[nearestCity.index].x
-       << ", "
-       << cityLocations[nearestCity.index].y
-       << ") con una distancia de: "
-       << nearestCity.distance
-       << endl;
-
+  inFile.close();
+  outFile.close();
   return 0;
 }
