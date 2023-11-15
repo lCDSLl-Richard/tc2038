@@ -4,6 +4,7 @@
 #include "headers/tsp.h"
 #include "headers/nearestPoint.h"
 #include "headers/fordFulkerson.h"
+#include "headers/kruskal.h"
 
 using namespace std;
 
@@ -24,6 +25,21 @@ int main(int argc, char *argv[])
       input >> weight;
       cities.setEdge(i, j, weight);
     }
+
+  vector<Edge> mst;
+  kruskal(cities, mst);
+
+  cout << "El cableado más óptimo es:\n";
+  for (auto node : mst)
+    cout << "De la ciudad "
+         << (char)(node.from + 'A')
+         << " a la ciudad "
+         << (char)(node.to + 'A')
+         << " con una distancia de "
+         << node.weight
+         << " km."
+         << endl;
+  cout << endl;
 
   TspResult res = tsp(cities, 0);
 
