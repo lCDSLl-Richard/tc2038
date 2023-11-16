@@ -4,7 +4,7 @@
 #include <fstream>
 
 #include "solution.cpp"
-#include "headers/argHelper.h"
+#include "headers/flagProcessor.h"
 
 using namespace std;
 
