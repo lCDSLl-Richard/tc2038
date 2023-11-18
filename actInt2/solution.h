@@ -1,5 +1,5 @@
-#ifndef SOLUTION_CPP
-#define SOLUTION_CPP
+#ifndef SOLUTION_H
+#define SOLUTION_H
 
 #include <iostream>
 

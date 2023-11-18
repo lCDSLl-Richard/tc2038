@@ -24,6 +24,15 @@ float calculateDistance(Point &a, Point &b)
   return sqrt(pow(b.x - a.x, 2) + pow(b.y - b.x, 2));
 }
 
+/**
+ * @brief Calcula el punto más cercano dado un conjunto de puntos y un punto
+ * nuevo
+ *
+ * @param points el vector con los puntos almacenados
+ * @param point el punto nuevo
+ * @return Una struct con el índice del punto más cercano y la distancia al
+ * mismo
+ */
 NearestPointRes nearestPoint(vector<Point> &points, Point &point)
 {
   int nearestPoint = 0;

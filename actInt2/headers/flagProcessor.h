@@ -7,6 +7,13 @@
 
 using namespace std;
 
+/**
+ * @brief Procesa las banderas del programa
+ *
+ * @param argc la cantidad de argumentos
+ * @param argv el arreglo con los argumentos
+ * @param flags el mapa dónde se almacenarán las banderas procesadas
+ */
 void processFlags(int argc, char *argv[], map<string, string> &flags)
 {
   for (int i = 1; i < argc; i++)

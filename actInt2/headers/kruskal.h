@@ -33,6 +33,15 @@ void unionSets(vector<int> &parent, int x, int y)
   parent[xRoot] = yRoot;
 }
 
+/**
+ * @brief Aplica el algoritmo de Kruskal sobre un grafo
+ *
+ * @param graph el grafo sobre el cual aplicar el algoritmo
+ * @param result el arreglo dónde se va a guardar el resultado
+ *
+ * Complejidad Temporal: O(E * logV)
+ * Complejidad Espacial: O(V + E)
+ */
 void kruskal(Graph &graph, vector<Edge> &result)
 {
   int vertexes = graph.size();

@@ -1,9 +1,20 @@
+/*
+  Damariz Licea Carrisoza           - A01369045
+  Ricardo Adolfo Fernández Alvarado - A01704813
+
+  Para compilar:
+  g++ main.cpp -o app -std=c++11
+
+  Para usar:
+  ./app -i <Archivo de entrada> -o <Archivo de Salida>
+*/
+
 #include <iostream>
 
 #include <map>
 #include <fstream>
 
-#include "solution.cpp"
+#include "solution.h"
 #include "headers/flagProcessor.h"
 
 using namespace std;

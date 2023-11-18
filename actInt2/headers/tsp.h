@@ -16,6 +16,14 @@ struct TspResult
   vector<int> route;
 };
 
+/**
+ * @brief Calcula la ruta más óptima para visitar todos los nodos y regresar al
+ * nodo inicial
+ *
+ * @param graph el grafo sobre el cual aplicar el algoritmo
+ * @param start el nodo sobre el cual iniciar. Por defecto es 0
+ * @return Una struct con la ruta a seguir y el costo total de la ruta
+ */
 TspResult tsp(Graph &graph, int start = 0)
 {
   int numCities = graph.size();

@@ -8,6 +8,17 @@
 #define INF std::numeric_limits<int>::max();
 using namespace std;
 
+/**
+ * @brief Aplica BFS sobre un grafo y guarda los nodos padre dentro de la
+ * búsqueda. Adaptado para funcionar con Ford-Fulkerson
+ *
+ * @param graph el grafo sobre el cuál aplicar la búsqueda
+ * @param parent el arreglo dónde se guardan los padres de cada nodo
+ * @param source el nodo desde el cuál sale el flujo
+ * @param sink el nodo al cuál llega el flujo
+ * @return Si se encontró cierto nodo en el grafo
+ *
+ */
 bool bfs(Graph &graph, vector<int> &parent, int source, int sink)
 {
   int gSize = graph.size();
@@ -39,6 +50,18 @@ bool bfs(Graph &graph, vector<int> &parent, int source, int sink)
   return false;
 }
 
+/**
+ * @brief Aplica el algoritmo Ford-Fulkerson sobre un grafo.
+ *
+ * @param graph el grafo original
+ * @param rGraph el grafo que represental el flujo residual
+ * @param source el comienzo del flujo
+ * @param sink el destino del flujo
+ * @return el flujo máximo del grafo
+ *
+ * @note Complejidad temporal: O(fE^2); f -> flujo max; E -> aristas;
+ * @note Complejidad espacial: O(V + E); V -> vértices
+ */
 int fordFulkerson(Graph &graph, Graph &rGraph, int source, int sink)
 {
   int gSize = graph.size();
