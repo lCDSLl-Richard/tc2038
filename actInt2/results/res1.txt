@@ -1,11 +1,17 @@
 El cableado más óptimo es:
-De la ciudad A a la ciudad B con una distancia de 2 km.
+De la ciudad B a la ciudad E con una distancia de 2 km.
+De la ciudad B a la ciudad C con una distancia de 3 km.
+De la ciudad D a la ciudad E con una distancia de 4 km.
+De la ciudad A a la ciudad E con una distancia de 8 km.
 
-Costo mínimo desde el nodo A a todas las ciudades: 5
-Ruta seguida: A B A 
-El flujo máximo de la ciudad A a la ciudad B es: 3
+Costo mínimo desde el nodo A a todas las ciudades: 32
+Ruta seguida: A C B D E A 
+El flujo máximo de la ciudad A a la ciudad E es: 33
 El grafo de Flujo máximo es: 
-2 0 
-7 5 
+ 0  7  0  9  0 
+17  0  0  7  0 
+20  6  0 12  1 
+29  7  0  0  0 
+16  4 39  8  0 
 
-La central más cercana es: (3, 4) con una distancia de: 62.0322
+La central más cercana es: (200, 500) con una distancia de: 215.745
