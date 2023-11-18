@@ -2,6 +2,7 @@
 #define NEARESTPOINT_H
 
 #include <vector>
+#include <cmath>
 
 #define FLOAT_INF std::numeric_limits<float>::max();
 
