@@ -14,4 +14,4 @@ El grafo de Flujo máximo es:
 29  7  0  0  0 
 16  4 39  8  0 
 
-La central más cercana es: (200, 500) con una distancia de: 215.745
+La central más cercana es: (200, 500) con una distancia de: 
